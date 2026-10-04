@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏗️ Calculadora de Dimensionamento de Vigas de Concreto (DIP-ENG-02)
+# 🏗️ Calculadora de Dimensionamento de Vigas de Concreto
 
 [![C#](https://img.shields.io/badge/C%23-.NET_8-purple?style=for-the-badge&logo=csharp&logoColor=white)](https://dotnet.microsoft.com/)
 [![WPF](https://img.shields.io/badge/WPF-Windows_Presentation_Foundation-blue?style=for-the-badge&logo=windows&logoColor=white)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
