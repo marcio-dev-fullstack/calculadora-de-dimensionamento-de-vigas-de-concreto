@@ -1,13 +1,13 @@
 <div align="center">
 
-# 🎓 Gerador e Validador de Quiz Educacional (DIP-EDU-01)
+# 🏗️ Calculadora de Dimensionamento de Vigas de Concreto (DIP-ENG-02)
 
-[![Java](https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-green?style=for-the-badge&logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
+[![C#](https://img.shields.io/badge/C%23-.NET_8-purple?style=for-the-badge&logo=csharp&logoColor=white)](https://dotnet.microsoft.com/)
+[![WPF](https://img.shields.io/badge/WPF-Windows_Presentation_Foundation-blue?style=for-the-badge&logo=windows&logoColor=white)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow?style=for-the-badge)]()
 
-*Sistema centralizado para gestão, aplicação e correção automatizada de avaliações educacionais.*
+*Ferramenta computacional de alta performance para cálculo estrutural e dimensionamento de armaduras em vigas de concreto armado.*
 
 **Gerente e Desenvolvedor Responsável:** Márcio Rodrigues de Oliveira
 
@@ -17,86 +17,76 @@
 
 ## 📌 Visão Geral do Projeto
 
-O **Gerador e Validador de Quiz Educacional** é uma solução robusta projetada para modernizar o processo avaliativo em instituições de ensino e centros de treinamento técnico. O sistema elimina a correção manual e a tabulação demorada em planilhas, oferecendo um fluxo automatizado de ponta a ponta: desde o cadastro de itens em banco de dados até a exportação de relatórios analíticos de desempenho.
+O **DIP-ENG-02** é uma solução desktop moderna e intuitiva projetada para auxiliar engenheiros civis, calculistas e estudantes de engenharia na fase de projeto estrutural. O aplicativo automatiza o dimensionamento de armaduras longitudinais e transversais em vigas submetidas à flexão simples e esforço cortante, garantindo conformidade com as normas técnicas vigentes (como a ABNT NBR 6118) e eliminando erros manuais de cálculo e consulta tabular.
 
 ---
 
 ## 🚀 Funcionalidades Principais
 
-* **🗂️ Banco de Questões:** Cadastro flexível de perguntas de múltipla escolha com suporte a níveis de dificuldade, pesos, tags e alternativas customizáveis.
-* **⏱️ Aplicação Cronometrada:** Interface de teste intuitiva para o aluno com temporizador regressivo e salvamento de estado atômico.
-* **⚡ Correção Instantânea:** Motor lógico que compara as respostas submetidas com o gabarito oficial em milissegundos.
-* **📊 Relatórios e Métricas:** Painel de aproveitamento para docentes com exportação de resultados em formatos padronizados (`PDF` e `CSV`).
+* **📐 Entrada Paramétrica Completa:** Configuração ágil de dados geométricos ($b$, $h$, cobrimento) e mecânicos ($f_{ck}$ do concreto, $f_{yk}$ do aço).
+* **⚡ Motor de Cálculo Iterativo:** Determinação automatizada da linha neutra ($x$), verificação de domínios de deformação (Domínios 2, 3 e 4) e cálculo exato da área de aço necessária ($As$).
+* **🔗 Dimensionamento de Estribos:** Cálculo da armadura transversal para combate ao esforço cortante ($V_{sd}$).
+* **📊 Relatório Técnico Integrado:** Emissão de sumários descritivos e memoriais de cálculo prontos para conferência e cópia.
 
 ---
 
 ## 🛠️ Stack Tecnológica
 
-O projeto foi arquitetado utilizando padrões modernos de desenvolvimento de software:
+O projeto foi construído utilizando o ecossistema moderno da Microsoft:
 
-* **Linguagem:** Java (JDK 17+)
-* **Framework:** Spring Boot / Spring MVC / Thymeleaf (ou JavaFX para versão desktop nativa)
-* **Persistência de Dados:** H2 Database (Modo Embarcado) / SQLite
-* **Geração de Documentos:** Apache PDFBox (para relatórios em PDF)
-* **Arquitetura:** Padrão em Camadas (Controller / Service / Repository) alinhado aos princípios SOLID.
+* **Linguagem:** C# (.NET 8)
+* **Interface Gráfica (GUI):** WPF (Windows Presentation Foundation) com arquitetura reativa baseada em padrões MVVM.
+* **Persistência de Dados (Opcional):** SQLite embarcado para histórico local de projetos estruturais.
+* **Arquitetura:** Padrão limpo desacoplando a lógica de negócio estrutural da interface de usuário.
 
 ---
 
-## 🏗️ Arquitetura e Estrutura de Camadas
+## 🏗️ Estrutura da Arquitetura
 
 ```text
-src/main/java/com/marcioliveira/quiz
-│
-├── controller/     # Controladores de rotas e requisições HTTP / GUI
-├── service/        # Regras de negócio (Correção, Embaralhamento, Validação)
-├── repository/     # Camada de persistência e acesso a dados (JPA / JDBC)
-├── model/          # Entidades de Domínio (Quiz, Questao, Aluno, Submissao)
-└── dto/            # Objetos de Transferência de Dados
+src/
+├── Core/               # Modelos matemáticos e regras normativas de cálculo
+├── ViewModels/         # Lógica de apresentação e comandos MVVM
+├── Views/              # Interfaces gráficas em XAML (WPF)
+└── Services/           # Serviços de exportação de relatórios e persistência local
 ```
 
 ---
 
-## 📋 Requisitos do Sistema
+## 📋 Critérios Técnicos e Normativos
 
-### Requisitos Funcionais
-* **RF01:** Cadastro de questões vinculadas a disciplinas e categorias por usuários com perfil docente.
-* **RF02:** Criação de provas personalizadas com limite de tempo e pontuação total ajustável.
-* **RF03:** Exibição controlada de questões com cronômetro ativo para o discente.
-* **RF04:** Cálculo e persistência automática da nota final imediatamente após a submissão.
-
-### Requisitos Não Funcionais
-* **RNF01:** Tempo de resposta para correção e submissão inferior a 1 segundo.
-* **RNF02:** Persistência atômica de dados para evitar perda de avaliações em caso de falhas abruptas.
+O motor de cálculo segue rigorosamente os princípios fundamentais do projeto de estruturas de concreto:
+* **Flexão Simples:** Verificação dos limites de escoamento do aço e deformação máxima do concreto (ruptura frágil x dúctil).
+* **Domínios de Deformação:** Classificação estrutural de acordo com a NBR 6118.
+* **Taxas de Armadura:** Alertas automáticos para valores inferiores ao mínimo exigido por norma ou superiores ao limite máximo de esmagamento das bielas comprimidas.
 
 ---
 
 ## ⚙️ Como Executar o Projeto
 
 1. **Pré-requisitos:**
-   * Ter o **Java JDK 17+** instalado em sua máquina.
-   * Ter o **Maven** configurado no PATH.
+   * Ter o [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) instalado.
+   * Sistema Operacional Windows (recomendado para execução nativa WPF).
 
 2. **Clonar o Repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/quiz-educacional-java.git
-   cd quiz-educacional-java
+   git clone https://github.com/seu-usuario/calculadora-vigas-concreto.git
+   cd calculadora-vigas-concreto
    ```
 
 3. **Compilar e Executar:**
    ```bash
-   mvn clean spring-boot:run
+   dotnet build
+   dotnet run --project src/Views/ConcreteBeamCalculator.csproj
    ```
-
-4. **Acessar a Aplicação:**
-   Abra o navegador e acesse: `http://localhost:8080`
 
 ---
 
 ## 📄 Licença
 
-Este projeto é distribuído sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+Este projeto é distribuído sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
 
 ---
 <div align="center">
-Desenvolvido com dedicação por <strong>Márcio Rodrigues de Oliveira</strong>.
+Desenvolvido com rigor técnico por <strong>Márcio Rodrigues de Oliveira</strong>.
 </div>
